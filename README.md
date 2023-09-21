@@ -32,3 +32,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+Project 
+Name: Cover
+
+Description:  A Drag-and-Drop Image gallery using Next Js
+
+About Cover: Developed using next js and consumption of endpoints from Unsplash Api
+
+The design involves a landing page which users can either sign Up or Log in. 
+Authentication was provided using Firebase authentication services.
+The Home page displays a total of 30 images and it contains a search bar in which users can search for any image of their choice.
+When an image is hovered on, the description of the image is displayed.
+I included tags in which one can filter or re-render the view of the home page(this clears out once the page is refreshed).
+The site is also responsive.
+
+
