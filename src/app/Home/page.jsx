@@ -117,8 +117,9 @@ const fetchImages = async () => {
 if (typeof window !== 'undefined') {
    // Retrieve the username from local storage when the component mounts
    const savedUsername = localStorage.getItem('username');
-   setName(savedUsername)
+   
 }
+
  
   
   const handleDragDrop = (results) => {
