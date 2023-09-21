@@ -27,6 +27,7 @@ const HomePage = () => {
     const [error, setError] = useState('')
     const [searchResults, setSearchResults] = useState([])
     const [isLoading, setLoading] = useState(true)
+    const [name , setName] =useState('')
     
 
     const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -113,9 +114,12 @@ const fetchImages = async () => {
     
   }
 
-
-  // Retrieve the username from local storage when the component mounts
-  const savedUsername = localStorage.getItem('username');
+if (typeof window !== 'undefined') {
+   // Retrieve the username from local storage when the component mounts
+   const savedUsername = localStorage.getItem('username');
+   setName(savedUsername)
+}
+ 
   
   const handleDragDrop = (results) => {
     const {source, destination, type} = results
@@ -158,7 +162,7 @@ const fetchImages = async () => {
     <div className='flex flex-col'>
         <div className='relative'>
         <button onClick={handleSignOut} className='absolute xsm:w-[80px] xsm:h-[36px]  lg:w-[150px] lg:h-[48px] bg-slate-500 hover:bg-red-500 hover:text-white text-white right-4 top-8 '>Sign Out</button>
-        <h2 className='md:top-[20%] centered-name  absolute text-white lg:text-[50px] xsm:text-[40px]'>Welcome {savedUsername}</h2>
+        <h2 className='md:top-[20%] centered-name  absolute text-white lg:text-[50px] xsm:text-[40px]'>Welcome {name}</h2>
         <div className='centered-div absolute w-[100%] items-center flex justify-center'>
         <div className='flex flex-col items-center'>
       <div className='w-[100%] h-[50px] items-center flex flex-row justify-center gap-3'>

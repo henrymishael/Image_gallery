@@ -32,10 +32,12 @@ const SignUp = () => {
       const handleChange = (e) => {
         const newName = e.target.value;
         setUsername(newName);
+      }
+        if (typeof window !== 'undefined'){
         // Save the username to local storage whenever it changes
         localStorage.setItem('username', newName);
       };
-
+    
     const router = useRouter()
 
     const handlePasswordVisibility = () => {
@@ -73,7 +75,7 @@ const SignUp = () => {
 
   return (
 
-<div className={`${cabin} flex flex-row w-[100vw] h-[100vh]`}>
+<div className={`flex flex-row w-[100vw] h-[100vh]`}>
 <div className='md:w-[30%] lg:w-[50%] xsm:hidden md:block h-[100hv] bg-emerald-600'>
    <Image className='md:hidden lg:block bg-cover bg-center  h-[100%]' src={cover} />
         <Image className='lg:hidden bg-cover bg-center  h-[100%]' src={md} />
