@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: black;
+  background: white
+}
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+
+.glass {
+  background: rgba(255, 255, 255, .15);
+  backdrop-filter:blur(30px);
+}
+
+.centered-div {
+  position: absolute;
+  z-index:99;
+  margin: 0 auto;
+  top:60%;
+  right: 50%;
+  transform: translate(50%, -50%)
+  
+}
+.centered-name {
+  position: absolute;
+  z-index:99;
+  margin: 0 auto;
+  top:30%;
+  right: 50%;
+  transform: translate(50%, -50%)
+  
+}
+
+.move-up {
+  animation: move-up 1.0s ease-in-out forwards ;
+  
+}
+@keyframes move-up {
+  from {
+      transform: translateY(5%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0%);
+      opacity: 1;
+  }
+}
+
+.draggable-image {
+  cursor: grab;
+  border: 2px dashed #ccc;
+}
