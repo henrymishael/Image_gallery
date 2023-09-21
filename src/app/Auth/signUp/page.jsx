@@ -28,15 +28,22 @@ const SignUp = () => {
           setUsername(savedUsername);
         }
       }, []);
-    
       const handleChange = (e) => {
         const newName = e.target.value;
         setUsername(newName);
       }
+      
         if (typeof window !== 'undefined'){
         // Save the username to local storage whenever it changes
-        localStorage.setItem('username', newName);
+        localStorage.setItem('username', username);
       };
+
+
+     
+
+      
+
+
     
     const router = useRouter()
 
