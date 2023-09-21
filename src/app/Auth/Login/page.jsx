@@ -4,11 +4,8 @@ import svg from '../../../../public/Images/black.png'
 import cover from '../../../../public/Images/authbg.png'
 import md from '../../../../public/Images/md.png'
 import Image from 'next/image'
-import Home from '@/app/page'
-import { cabin } from '@/app/layout'
-import { Eye } from '@/app/components/eye'
+
  import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5"; 
-import RootLayout from '@/app/layout'
 import Link from 'next/link';
 import { auth } from '@/app/utils/request';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -17,7 +14,7 @@ import { useRouter } from 'next/navigation';
 
 
 const Login = () => {
-    const selectedFont = 'cabin'
+ 
     const router = useRouter()
 
     const [email, setEmail] = useState('');
@@ -45,8 +42,8 @@ const Login = () => {
         };
 
   return (
-<RootLayout font={selectedFont}>
-<div className={`${cabin} flex md:flex-row w-[100vw] h-[100vh]`}>
+
+<div className={` flex md:flex-row w-[100vw] h-[100vh]`}>
    <div className='md:w-[30%] lg:w-[50%] xsm:hidden md:block h-[100hv] bg-emerald-600'>
         <Image className='md:hidden lg:block bg-cover bg-center  h-[100%]' src={cover} />
         <Image className='lg:hidden bg-cover bg-center  h-[100%]' src={md} />
@@ -102,7 +99,7 @@ const Login = () => {
             </div>
     </div>
    </div>
-   </RootLayout>
+  
   )
 }
 export default Login

@@ -4,11 +4,7 @@ import svg from '../../../../public/Images/black.png'
 import cover from '../../../../public/Images/authbg.png'
 import md from '../../../../public/Images/md.png'
 import Image from 'next/image'
-import Home from '@/app/page'
-import { cabin } from '@/app/layout'
-import { Eye } from '@/app/components/eye'
- import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5"; 
-import RootLayout from '@/app/layout'
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5"; 
 import Link from 'next/link';
 import { auth } from '@/app/utils/request';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -76,7 +72,7 @@ const SignUp = () => {
      
 
   return (
-<RootLayout font={selectedFont}>
+
 <div className={`${cabin} flex flex-row w-[100vw] h-[100vh]`}>
 <div className='md:w-[30%] lg:w-[50%] xsm:hidden md:block h-[100hv] bg-emerald-600'>
    <Image className='md:hidden lg:block bg-cover bg-center  h-[100%]' src={cover} />
@@ -144,7 +140,7 @@ const SignUp = () => {
             </div>
     </div>
    </div>
-   </RootLayout>
+  
   )
 }
 export default SignUp

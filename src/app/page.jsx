@@ -6,14 +6,13 @@ import svg from '../../public/Images/white.svg'
 import Image from 'next/image';
 import Link from 'next/link';
 import xsm from '../../public/Images/xsmn.png'
-import RootLayout
- from '@/app/layout'
+
 
 const Home = () => {
-  const selectedFont = 'gothic'
+ 
 
   return (
-    <RootLayout font={selectedFont}>
+    
     <div >
       <div className={`absolute text-white md:bg-[#0000001c] xsm:bg-[#00000077] z-10 w-[100vw] h-[100vh] `}>
         <Image className='mt-10 ml-10' src={svg}/>
@@ -50,7 +49,7 @@ const Home = () => {
 
  
     </div>
-    </RootLayout>
+    
   )
 }
 export default Home
