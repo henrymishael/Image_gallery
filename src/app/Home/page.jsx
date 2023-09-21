@@ -13,7 +13,7 @@ import { FaFacebookSquare  } from "react-icons/fa";
 import { FaInstagram  } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
-
+import { Toaster, toast } from 'react-hot-toast';
 
 // function cn(...classes: string[]) {
 //     return classes.filter(Boolean).join(' ');
@@ -66,6 +66,8 @@ const HomePage = () => {
     }
 
     useEffect(() => {
+      try{
+        setLoading(true)
         const fetchImages = async() => {
             const response = await fetch(`https://api.unsplash.com/photos?page=1&per_page=${IMAGES_PER_PAGE}&client_id=CIvuLKpSZSlJunlMfJrAhi-P6wVskWQpDrXc_9U-O2w`)
             const data = await response.json()
@@ -74,6 +76,11 @@ const HomePage = () => {
             console.log(data)
         }
         fetchImages()
+        
+      }catch(error){
+          toast.error(error.message)
+          console.error('message:Error getting images:', error.message);
+        }
         
 }, [])
 
@@ -96,6 +103,7 @@ const fetchImages = async () => {
     
     console.log(data.results)
     } catch(error){
+      toast.error(error.message)
       console.error('message:Error getting images:', error.message);
     }
 }
@@ -161,6 +169,30 @@ if (typeof window !== 'undefined') {
   return (
 
     <div className='flex flex-col'>
+      <Toaster
+            toastOptions={{
+                success: {
+                  style: {
+                    background: 'grey',
+                  },
+                },
+                error:{
+                  style:{
+                      background: 'white',
+                      color:'black',
+                  },
+                },
+                
+                className: '',
+                    style: {
+                        border: 'none',
+                        padding: '16px',
+                        color: 'white',
+                        width: '200px',
+                        font:'semibold'
+                    },
+            }}
+  />
         <div className='relative'>
         <button onClick={handleSignOut} className='absolute xsm:w-[80px] xsm:h-[36px]  lg:w-[150px] lg:h-[48px] bg-slate-500 hover:bg-red-500 hover:text-white text-white right-4 top-8 '>Sign Out</button>
         <h2 className='md:top-[20%] centered-name  absolute text-white lg:text-[50px] xsm:text-[40px]'>Welcome {name}</h2>
@@ -199,14 +231,12 @@ if (typeof window !== 'undefined') {
             <div {...provided.droppableProps} ref={provided.innerRef}>
         <div 
         className='mt-8 grid grid-cols-1 gap-y-10 gap-x-6  xsm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8 px-8'>
-         
-            
           {images ? (
            images.map((image, index) => (
            
              <Draggable draggableId={image.id} key={image.id} index={index}>
               {(provided) => (
-              <div className='relative group' {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
+              <div onLoadingComplete={() => setLoading(false)} className='relative group' {...provided.dragHandleProps} {...provided.draggableProps} ref={provided.innerRef}>
                  <div 
                  key={index} {...image} className=' item group aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8   w-full overflow-hidden rounded-lg bg-gray-200'>
                  <Image 
@@ -229,11 +259,11 @@ if (typeof window !== 'undefined') {
             </div>
             </div>
             )}
-            </Draggable>)
+            </Draggable>
           
-           ))
+          ))
           
-             : 
+           ) : 
             (
 
              searchResults.map((result, index) => (

@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { auth } from '@/app/utils/request';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-
+import { Toaster, toast } from 'react-hot-toast';
  
 
 
@@ -71,9 +71,11 @@ const SignUp = () => {
           const user = userCredential.user;
           
           console.log('User registered successfully!')
+          toast.success('Login Successful')
           router.push('../Home')
         })
         } catch (error) {
+          toast.error(error.message)
           console.error('Error registering user:', error.message);
         }
       };
@@ -83,6 +85,30 @@ const SignUp = () => {
   return (
 
 <div className={`flex flex-row w-[100vw] h-[100vh]`}>
+<Toaster
+            toastOptions={{
+                success: {
+                  style: {
+                    background: 'grey',
+                  },
+                },
+                error:{
+                  style:{
+                      background: 'white',
+                      color:'black',
+                  },
+                },
+                
+                className: '',
+                    style: {
+                        border: 'none',
+                        padding: '16px',
+                        color: 'white',
+                        width: '200px',
+                        font:'semibold'
+                    },
+            }}
+  />
 <div className='md:w-[30%] lg:w-[50%] xsm:hidden md:block h-[100hv] bg-emerald-600'>
    <Image className='md:hidden lg:block bg-cover bg-center  h-[100%]' src={cover} />
         <Image className='lg:hidden bg-cover bg-center  h-[100%]' src={md} />

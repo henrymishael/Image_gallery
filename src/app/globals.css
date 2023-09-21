@@ -70,3 +70,25 @@ body {
   cursor: grab;
   border: 2px dashed #ccc;
 }
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 50px 0 0 87px;
+  border-color: transparent transparent transparent #007bff;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
