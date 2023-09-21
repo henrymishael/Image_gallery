@@ -14,7 +14,7 @@ import { useRouter } from 'next/navigation';
 
 
 const SignUp = () => {
-    const selectedFont = 'cabin'
+    
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
